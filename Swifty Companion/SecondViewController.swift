@@ -17,7 +17,7 @@ import SVProgressHUD
 
 class APIData {
     static var token : String?
-    static var tokenExpiry : Double = 0
+    static var tokenExpiry : Double?
 }
 
 class SecondViewController: UIViewController {
@@ -58,7 +58,6 @@ class SecondViewController: UIViewController {
             response in
             switch response.result {
             case .success:
-                print(response.result.value!)
                 let tokenData : JSON = JSON(response.result.value!)
                 self.extractToken(json : tokenData)
                 SVProgressHUD.dismiss()
@@ -69,9 +68,16 @@ class SecondViewController: UIViewController {
     }
     
     func extractToken(json : JSON) {
-        if let tok = json["access_token"].string, let created = json["created_at"].double, let expires = json["expires"].double {
+        if let tok = json["access_token"].string {
+            let created = json["created_at"].doubleValue
+            let expires = json["expires"].doubleValue
             APIData.token = tok
             APIData.tokenExpiry = created + expires
+            print(APIData.tokenExpiry!)
+        }
+        else {
+            userName.text = "could not refesh token"
+            print ("Failed to get new token")
         }
     }
     
