@@ -47,7 +47,6 @@ class SecondViewController: UIViewController {
             imageView.contentMode = .scaleAspectFit
             downloadImage(from: url)
         }
-        poplulate()
     }
     
     override func didReceiveMemoryWarning() {
@@ -179,7 +178,7 @@ class SecondViewController: UIViewController {
             else {
                 userData.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
             }
-            //Call update UI here
+            poplulate()
         }
         else {
             //update hidden status lable here
