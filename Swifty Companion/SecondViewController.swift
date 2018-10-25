@@ -43,10 +43,6 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         validateTokenThenGetData()
-        if let url = URL(string: "https://cdn.intra.42.fr/users/small_\(searchUsername).jpg") {
-            imageView.contentMode = .scaleAspectFit
-            downloadImage(from: url)
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,6 +55,10 @@ class SecondViewController: UIViewController {
     }
     
     func poplulate() {
+        if let url = URL(string: userData.pictureURL) {
+            imageView.contentMode = .scaleAspectFit
+            downloadImage(from: url)
+        }
         nameLabel.text = "Name: \(userData.displayName)"
         userNameLabel.text = "Username: \(userData.userName)"
         emailLabel.text = "Email: \(userData.email)"
@@ -67,6 +67,7 @@ class SecondViewController: UIViewController {
         walletLabel.text = "Wallet: \(userData.wallet)"
         mobileLabel.text = "Mobile: \(userData.mobile)"
         locationLabel.text = "Location: \(userData.location)"
+        SVProgressHUD.dismiss()
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -152,7 +153,6 @@ class SecondViewController: UIViewController {
         else {
             userNameLabel.text = "Token not validated yet"
         }
-        SVProgressHUD.dismiss()
     }
     
     func extractUserData(data : JSON) {
@@ -176,18 +176,23 @@ class SecondViewController: UIViewController {
             else {
                 userData.mobile = "unavailable"
             }
-            if let pictureURL = data["image_url"].string {
-                userData.pictureURL = pictureURL
+            if let image = data["image_url"].string {
+                if image == "https://cdn.intra.42.fr/users/default.png" {
+                    userData.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
+                }
+                else {
+                    userData.pictureURL = "https://cdn.intra.42.fr/users/small_\(searchUsername).jpg"
+                }
             }
             else {
                 userData.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
             }
-            poplulate()
         }
         else {
             //update hidden status lable here
             print("Failed to extract user data from API respons")
         }
+        poplulate()
     }
 }
 
