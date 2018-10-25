@@ -181,7 +181,7 @@ class SecondViewController: UIViewController {
         if let name = data["name"].string{
             skill.name = name
         }
-        if let level = data["level"].int {
+        if let level = data["level"].float {
             skill.percent = String(level)
         }
         else {
