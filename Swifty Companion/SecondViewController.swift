@@ -20,7 +20,7 @@ struct APIData {
     static var tokenExpiry : Double?
 }
 
-struct project {
+struct Project {
     var name : String = "default"
     var percent : String = "-1"
 }
@@ -44,7 +44,6 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let userBaseURL : String = "https://api.intra.42.fr/v2/users/"
     var searchUsername : String = ""
     var token : String?
-    var userData : UserDataModel = UserDataModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,18 +60,18 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func poplulate() {
-        if let url = URL(string: userData.pictureURL) {
+        if let url = URL(string: UserDataModel.pictureURL) {
             imageView.contentMode = .scaleAspectFit
             downloadImage(from: url)
         }
-        nameLabel.text = "Name: \(userData.displayName)"
-        userNameLabel.text = "Username: \(userData.userName)"
-        emailLabel.text = "Email: \(userData.email)"
-        levelLabel.text = "Level: \(userData.level)"
-        pointsLabel.text = "Correction Points: \(userData.correctionPoints)"
-        walletLabel.text = "Wallet: \(userData.wallet)"
-        mobileLabel.text = "Mobile: \(userData.mobile)"
-        locationLabel.text = "Location: \(userData.location)"
+        nameLabel.text = "Name: \(UserDataModel.displayName)"
+        userNameLabel.text = "Username: \(UserDataModel.userName)"
+        emailLabel.text = "Email: \(UserDataModel.email)"
+        levelLabel.text = "Level: \(UserDataModel.level)"
+        pointsLabel.text = "Correction Points: \(UserDataModel.correctionPoints)"
+        walletLabel.text = "Wallet: \(UserDataModel.wallet)"
+        mobileLabel.text = "Mobile: \(UserDataModel.mobile)"
+        locationLabel.text = "Location: \(UserDataModel.location)"
         SVProgressHUD.dismiss()
     }
     
@@ -167,37 +166,37 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func parseProjectInfo(data : JSON) -> Project {
+        var project : Project = Project()
+        if let name = data["project"]["slug"].string , let percentage = data["final_mark"].int {
+            project.name = name
+            project.percent = String(percentage)
+        }
+        return project
+    }
+    
     func extractUserData(data : JSON) {
-        userData.userName = searchUsername
-        if let displayName = data["displayname"].string,
-            let email = data["email"].string,
-            let level = data["cursus_users"][0]["level"].double,
-            let location = data["campus"][0]["name"].string,
-            let wallet = data["wallet"].int,
-            let correctionPoints = data["correction_point"].int
+        UserDataModel.userName = searchUsername
+        if let displayName = data["displayname"].string, let email = data["email"].string, let level = data["cursus_users"][0]["level"].double,
+        let location = data["campus"][0]["name"].string,let wallet = data["wallet"].int,let correctionPoints = data["correction_point"].int
         {
-            userData.displayName = displayName
-            userData.email = email
-            userData.level = String(level)
-            userData.location = location
-            userData.wallet = String(wallet)
-            userData.correctionPoints = String(correctionPoints)
-            if let mobile = data["phone"].string {
-                userData.mobile = mobile
-            }
-            else {
-                userData.mobile = "unavailable"
-            }
+            UserDataModel.displayName = displayName
+            UserDataModel.email = email
+            UserDataModel.level = String(level)
+            UserDataModel.location = location
+            UserDataModel.wallet = String(wallet)
+            UserDataModel.correctionPoints = String(correctionPoints)
+            if let mobile = data["phone"].string { UserDataModel.mobile = mobile }
             if let image = data["image_url"].string {
                 if image == "https://cdn.intra.42.fr/users/default.png" {
-                    userData.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
+                    UserDataModel.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
                 }
                 else {
-                    userData.pictureURL = "https://cdn.intra.42.fr/users/small_\(searchUsername).jpg"
+                    UserDataModel.pictureURL = "https://cdn.intra.42.fr/users/small_\(searchUsername).jpg"
                 }
             }
             else {
-                userData.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
+                UserDataModel.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
             }
         }
         else {
