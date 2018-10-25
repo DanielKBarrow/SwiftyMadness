@@ -171,7 +171,7 @@ class SecondViewController: UIViewController {
         let location = data["campus"][0]["name"].string,let wallet = data["wallet"].int,let correctionPoints = data["correction_point"].int
         {
             UserDataModel.displayName = displayName
-            UserDataModel.emaihow l = email
+            UserDataModel.email = email
             UserDataModel.level = String(level)
             UserDataModel.location = location
             UserDataModel.wallet = String(wallet)
