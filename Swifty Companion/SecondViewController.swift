@@ -181,7 +181,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let location = data["campus"][0]["name"].string,let wallet = data["wallet"].int,let correctionPoints = data["correction_point"].int
         {
             UserDataModel.displayName = displayName
-            UserDataModel.email = email
+            UserDataModel.emaihow l = email
             UserDataModel.level = String(level)
             UserDataModel.location = location
             UserDataModel.wallet = String(wallet)
