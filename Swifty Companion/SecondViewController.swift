@@ -139,7 +139,6 @@ class SecondViewController: UIViewController {
                 switch response.result {
                 case .success:
                     self.extractUserData(data: JSON(response.result.value!))
-//                    print(JSON(response.result.value!))
                 case .failure(let error):
                     print(error)
                     self.userNameLabel.text = "user info request failed"
@@ -153,6 +152,7 @@ class SecondViewController: UIViewController {
     }
     
     func extractUserData(data : JSON) {
+        userData.userName = searchUsername
         if let displayName = data["displayname"].string,
             let email = data["email"].string,
             let level = data["cursus_users"][0]["level"].double,
