@@ -176,13 +176,34 @@ class SecondViewController: UIViewController {
         }
     }
     
+    func parseSkillInfo(data : JSON) -> Project {
+        var skill : Project = Project()
+        if let name = data["name"].string{
+            skill.name = name
+        }
+        if let level = data["level"].int {
+            skill.percent = String(level)
+        }
+        else {
+            skill.percent = "0"
+        }
+        return skill
+    }
+    
+    func getSkillsArray(skills : [JSON]) {
+        for subJSON in skills {
+            UserDataModel.skills.append(parseSkillInfo(data: subJSON))
+        }
+    }
+    
     func extractUserData(data : JSON) {
         UserDataModel.userName = searchUserName!
         if let displayName = data["displayname"].string, let email = data["email"].string, let level = data["cursus_users"][0]["level"].double,
-        let location = data["campus"][0]["name"].string,let wallet = data["wallet"].int,let correctionPoints = data["correction_point"].int,
-            let projectsArray = data["projects_users"].array
+        let location = data["campus"][0]["name"].string, let wallet = data["wallet"].int, let correctionPoints = data["correction_point"].int,
+        let projectsArray = data["projects_users"].array, let skillsArray = data["cursus_users"][0]["skills"].array
         {
             getProjectsArray(projects: projectsArray)
+            getSkillsArray(skills: skillsArray)
             UserDataModel.displayName = displayName
             UserDataModel.email = email
             UserDataModel.level = String(level)
@@ -190,6 +211,7 @@ class SecondViewController: UIViewController {
             UserDataModel.wallet = String(wallet)
             UserDataModel.correctionPoints = String(correctionPoints)
             if let mobile = data["phone"].string { UserDataModel.mobile = mobile }
+        
             if let image = data["image_url"].string {
                 if image == "https://cdn.intra.42.fr/users/default.png" {
                     UserDataModel.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
