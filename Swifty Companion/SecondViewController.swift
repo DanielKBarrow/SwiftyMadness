@@ -158,18 +158,31 @@ class SecondViewController: UIViewController {
     
     func parseProjectInfo(data : JSON) -> Project {
         var project : Project = Project()
-        if let name = data["project"]["slug"].string , let percentage = data["final_mark"].int {
+        if let name = data["project"]["slug"].string{
             project.name = name
+        }
+        if let percentage = data["final_mark"].int {
             project.percent = String(percentage)
         }
+        else {
+            project.percent = "0"
+        }
         return project
+    }
+    
+    func getProjectsArray(projects : [JSON]) {
+        for subJSON in projects {
+            UserDataModel.projects.append(parseProjectInfo(data: subJSON))
+        }
     }
     
     func extractUserData(data : JSON) {
         UserDataModel.userName = searchUserName!
         if let displayName = data["displayname"].string, let email = data["email"].string, let level = data["cursus_users"][0]["level"].double,
-        let location = data["campus"][0]["name"].string,let wallet = data["wallet"].int,let correctionPoints = data["correction_point"].int
+        let location = data["campus"][0]["name"].string,let wallet = data["wallet"].int,let correctionPoints = data["correction_point"].int,
+            let projectsArray = data["projects_users"].array
         {
+            getProjectsArray(projects: projectsArray)
             UserDataModel.displayName = displayName
             UserDataModel.email = email
             UserDataModel.level = String(level)
@@ -190,8 +203,9 @@ class SecondViewController: UIViewController {
             }
         }
         else {
-            //update hidden status lable here
+            // create popup and redirect back to loading page
             print("Failed to extract user data from API respons")
+            UserDataModel.reset()
         }
         poplulate()
     }

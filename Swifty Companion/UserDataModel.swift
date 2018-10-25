@@ -20,4 +20,18 @@ class UserDataModel {
     static var pictureURL : String = "Unavailable"
     static var projects : [Project] = []
     static var skills : [Project] = []
+    
+    static func reset () {
+        userName = "Unavailable"
+        displayName = "Unavailable"
+        email = "Unavailable"
+        mobile = "Unavailable"
+        level = "Unavailable"
+        location = "Unavailable"
+        wallet = "Unavailable"
+        correctionPoints = "Unavailable"
+        pictureURL = "Unavailable"
+        projects = []
+        skills = []
+    }
 }
