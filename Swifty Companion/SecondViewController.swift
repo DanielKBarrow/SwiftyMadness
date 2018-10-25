@@ -156,22 +156,36 @@ class SecondViewController: UIViewController {
     func extractUserData(data : JSON) {
         if let displayName = data["displayname"].string,
             let email = data["email"].string,
-            let mobile = data["phone"].string {
+            let level = data["cursus_users"][0]["level"].double,
+            let location = data["campus"][0]["name"].string,
+            let wallet = data["wallet"].int,
+            let correctionPoints = data["correction_point"].int
+        {
             userData.displayName = displayName
             userData.email = email
-            userData.mobile = mobile
-            print(displayName + " " + email + " " + mobile)
+            userData.level = String(level)
+            userData.location = location
+            userData.wallet = String(wallet)
+            userData.correctionPoints = String(correctionPoints)
+            if let mobile = data["phone"].string {
+                userData.mobile = mobile
+            }
+            else {
+                userData.mobile = "unavailable"
+            }
+            if let pictureURL = data["image_url"].string {
+                userData.pictureURL = pictureURL
+            }
+            else {
+                userData.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
+            }
+            //Call update UI here
         }
         else {
+            //update hidden status lable here
             print("Failed to extract user data from API respons")
         }
-//        let level = ""
-//        let location = ""
-//        let wallet = ""
-//        let correctionPoints = ""
-//        let pictureURL = ""
     }
-    
 }
 
 

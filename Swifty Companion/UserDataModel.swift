@@ -9,13 +9,13 @@
 import Foundation
 
 class UserDataModel {
-    var userName : String = ""
-    var displayName : String = ""
-    var email : String = ""
-    var mobile : String = ""
-    var level : String = ""
-    var location : String = ""
-    var wallet : String = ""
-    var correctionPoints : String = ""
-    var pictureURL : String = ""
+    var userName : String = "Unavailable"
+    var displayName : String = "Unavailable"
+    var email : String = "Unavailable"
+    var mobile : String = "Unavailable"
+    var level : String = "Unavailable"
+    var location : String = "Unavailable"
+    var wallet : String = "Unavailable"
+    var correctionPoints : String = "Unavailable"
+    var pictureURL : String = "Unavailable"
 }
