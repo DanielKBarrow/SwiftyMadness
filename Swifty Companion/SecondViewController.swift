@@ -20,8 +20,14 @@ struct APIData {
     static var tokenExpiry : Double?
 }
 
-class SecondViewController: UIViewController {
+struct project {
+    var name : String = "default"
+    var percent : String = "-1"
+}
+
+class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var mobileLabel: UILabel!
     @IBOutlet weak var walletLabel: UILabel!
@@ -71,7 +77,13 @@ class SecondViewController: UIViewController {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locationList.count
+        return 100
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        cell.textLabel?.text = String(indexPath.row)
+        return cell
     }
     
     func downloadImage(from url: URL) {
