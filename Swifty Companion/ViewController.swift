@@ -8,6 +8,7 @@
 
 import UIKit
 
+var searchUserName : String?
 
 class ViewController: UIViewController {
     
@@ -40,10 +41,7 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "gotToSecondScreen" {
-            let nextScreen = segue.destination as! SecondViewController
-            nextScreen.searchUsername = Username.text!
-        }
+        searchUserName = Username.text!.lowercased()
     }
 }
 

@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="GetUserInfo"/>
                                 <connections>
-                                    <segue destination="Npp-Qm-c8v" kind="show" id="3th-PQ-ZjF"/>
+                                    <segue destination="Npp-Qm-c8v" kind="show" identifier="TabController" id="1xs-ea-zPw"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4xZ-GH-CjQ">
@@ -43,6 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-327" y="-908"/>
         </scene>
         <!--Item-->
         <scene sceneID="EfJ-eV-znx">
@@ -153,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ElQ-BB-bmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1558" y="-680"/>
+            <point key="canvasLocation" x="1546" y="-918"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="z7b-wh-WcE">
@@ -169,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jid-C4-oRY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2623" y="58"/>
+            <point key="canvasLocation" x="1545" y="655"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="No7-lP-pSP">
@@ -185,12 +186,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJK-Qx-FyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2426" y="-679"/>
+            <point key="canvasLocation" x="1545" y="-158"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rGa-QR-ckH">
             <objects>
-                <tabBarController id="Npp-Qm-c8v" sceneMemberID="viewController">
+                <tabBarController id="Npp-Qm-c8v" customClass="TabBarController" customModule="Swifty_Companion" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="raG-hg-JIk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -204,7 +205,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJV-wK-Saq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="-662"/>
+            <point key="canvasLocation" x="631" y="-908"/>
         </scene>
     </scenes>
 </document>

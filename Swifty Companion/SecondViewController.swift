@@ -25,7 +25,7 @@ struct Project {
     var percent : String = "-1"
 }
 
-class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SecondViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var locationLabel: UILabel!
@@ -42,7 +42,6 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let secret : String = "42e1f8736895100e96b167391e9f1006529d1c9a971bd8fb8d44e635c801b9e6"
     let tokenURL : String = "https://api.intra.42.fr/oauth/token"
     let userBaseURL : String = "https://api.intra.42.fr/v2/users/"
-    var searchUsername : String = ""
     var token : String?
 
     override func viewDidLoad() {
@@ -54,6 +53,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
@@ -73,16 +73,6 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         mobileLabel.text = "Mobile: \(UserDataModel.mobile)"
         locationLabel.text = "Location: \(UserDataModel.location)"
         SVProgressHUD.dismiss()
-    }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = String(indexPath.row)
-        return cell
     }
     
     func downloadImage(from url: URL) {
@@ -108,7 +98,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 getNewToken()
             }
             else {
-                getUserInfo(name: searchUsername)
+                getUserInfo(name: searchUserName!)
             }
         }
         else {
@@ -125,7 +115,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             case .success:
                 let tokenData : JSON = JSON(response.result.value!)
                 self.extractToken(json : tokenData)
-                self.getUserInfo(name: self.searchUsername)
+                self.getUserInfo(name: searchUserName!)
             case .failure(let error):
                 self.userNameLabel.text = "Failed to get token"
                 print(error)
@@ -176,7 +166,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func extractUserData(data : JSON) {
-        UserDataModel.userName = searchUsername
+        UserDataModel.userName = searchUserName!
         if let displayName = data["displayname"].string, let email = data["email"].string, let level = data["cursus_users"][0]["level"].double,
         let location = data["campus"][0]["name"].string,let wallet = data["wallet"].int,let correctionPoints = data["correction_point"].int
         {
@@ -192,7 +182,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     UserDataModel.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
                 }
                 else {
-                    UserDataModel.pictureURL = "https://cdn.intra.42.fr/users/small_\(searchUsername).jpg"
+                    UserDataModel.pictureURL = "https://cdn.intra.42.fr/users/small_\(searchUserName!).jpg"
                 }
             }
             else {
