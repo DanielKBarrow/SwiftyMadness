@@ -69,6 +69,10 @@ class SecondViewController: UIViewController {
         locationLabel.text = "Location: \(userData.location)"
     }
     
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return locationList.count
+    }
+    
     func downloadImage(from url: URL) {
         print("Download Started")
         getData(from: url) { data, response, error in
