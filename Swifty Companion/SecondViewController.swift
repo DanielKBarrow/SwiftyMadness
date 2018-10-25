@@ -22,8 +22,15 @@ struct APIData {
 
 class SecondViewController: UIViewController {
     
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var mobileLabel: UILabel!
+    @IBOutlet weak var walletLabel: UILabel!
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     let UID : String = "2f7bd8b5bbd12bba980d6dbb8c97d7e3f07fb72ad11fb3278b14adfb9826d96b"
     let secret : String = "42e1f8736895100e96b167391e9f1006529d1c9a971bd8fb8d44e635c801b9e6"
@@ -35,12 +42,12 @@ class SecondViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNameLabel.text = searchUsername
         validateTokenThenGetData()
         if let url = URL(string: "https://cdn.intra.42.fr/users/small_\(searchUsername).jpg") {
             imageView.contentMode = .scaleAspectFit
             downloadImage(from: url)
         }
+        poplulate()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,6 +57,17 @@ class SecondViewController: UIViewController {
     
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    func poplulate() {
+        nameLabel.text = "Name: \(userData.displayName)"
+        userNameLabel.text = "Username: \(userData.userName)"
+        emailLabel.text = "Email: \(userData.email)"
+        levelLabel.text = "Level: \(userData.level)"
+        pointsLabel.text = "Correction Points: \(userData.correctionPoints)"
+        walletLabel.text = "Wallet: \(userData.wallet)"
+        mobileLabel.text = "Mobile: \(userData.mobile)"
+        locationLabel.text = "Location: \(userData.location)"
     }
     
     func downloadImage(from url: URL) {
