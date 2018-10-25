@@ -31,7 +31,7 @@ class SecondViewController: UIViewController {
     let userBaseURL : String = "https://api.intra.42.fr/v2/users/"
     var searchUsername : String = ""
     var token : String?
-    var user : UserDataModel = UserDataModel()
+    var userData : UserDataModel = UserDataModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,11 +90,11 @@ class SecondViewController: UIViewController {
             response in
             switch response.result {
             case .success:
-                print(response.result.value!)
                 let tokenData : JSON = JSON(response.result.value!)
                 self.extractToken(json : tokenData)
                 self.getUserInfo(name: self.searchUsername)
             case .failure(let error):
+                self.userNameLabel.text = "Failed to get token"
                 print(error)
             }
             SVProgressHUD.dismiss()
@@ -102,11 +102,8 @@ class SecondViewController: UIViewController {
     }
     
     func extractToken(json : JSON) {
-        if let tok = json["access_token"].string {
-            let created = json["created_at"].doubleValue
-            let expires = json["expires_in"].doubleValue
-            APIData.token = tok
-            print("should expire: " + String(created + expires))
+        if let token = json["access_token"].string, let created = json["created_at"].double, let expires = json["expires_in"].double {
+            APIData.token = token
             APIData.tokenExpiry = created + expires
         }
         else {
@@ -124,7 +121,8 @@ class SecondViewController: UIViewController {
                 response in
                 switch response.result {
                 case .success:
-                    print(response.result.value!)
+                    self.extractUserData(data: JSON(response.result.value!))
+//                    print(JSON(response.result.value!))
                 case .failure(let error):
                     print(error)
                     self.userNameLabel.text = "user info request failed"
@@ -136,4 +134,42 @@ class SecondViewController: UIViewController {
         }
         SVProgressHUD.dismiss()
     }
+    
+    func extractUserData(data : JSON) {
+        if let displayName = data["displayname"].string,
+            let email = data["email"].string,
+            let mobile = data["phone"].string {
+            userData.displayName = displayName
+            userData.email = email
+            userData.mobile = mobile
+            print(displayName + " " + email + " " + mobile)
+        }
+        else {
+            print("Failed to extract user data from API respons")
+        }
+//        let level = ""
+//        let location = ""
+//        let wallet = ""
+//        let correctionPoints = ""
+//        let pictureURL = ""
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

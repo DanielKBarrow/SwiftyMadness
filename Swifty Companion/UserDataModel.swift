@@ -10,6 +10,7 @@ import Foundation
 
 class UserDataModel {
     var userName : String = ""
+    var displayName : String = ""
     var email : String = ""
     var mobile : String = ""
     var level : String = ""
