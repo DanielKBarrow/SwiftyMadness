@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2337FB0C21830B3F000EB00B /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2337FB0B21830B3F000EB00B /* ProjectController.swift */; };
+		2337FB0E21831DCE000EB00B /* SkillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2337FB0D21831DCE000EB00B /* SkillController.swift */; };
 		238D40072181E38600F789D5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238D40062181E38600F789D5 /* TabBarController.swift */; };
 		A3CFC405C36A5967DB16C258 /* Pods_Swifty_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98F6421C096C0C06AA92732 /* Pods_Swifty_Companion.framework */; };
 		C788288B218051370051B023 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C788288A218051370051B023 /* AppDelegate.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2337FB0B21830B3F000EB00B /* ProjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
+		2337FB0D21831DCE000EB00B /* SkillController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillController.swift; sourceTree = "<group>"; };
 		238D40062181E38600F789D5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = ../TabBarController.swift; sourceTree = "<group>"; };
 		454CC31A189CCF0C5E6ADAFC /* Pods-Swifty Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty Companion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty Companion/Pods-Swifty Companion.debug.xcconfig"; sourceTree = "<group>"; };
 		A26B2FFB16C0C361190B740C /* Pods-Swifty Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty Companion.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty Companion/Pods-Swifty Companion.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,10 +85,12 @@
 				C788288A218051370051B023 /* AppDelegate.swift */,
 				C788288C218051370051B023 /* ViewController.swift */,
 				C788288E218051370051B023 /* Main.storyboard */,
+				2337FB0B21830B3F000EB00B /* ProjectController.swift */,
 				C7882891218051380051B023 /* Assets.xcassets */,
 				C7882893218051380051B023 /* LaunchScreen.storyboard */,
 				C7882896218051380051B023 /* Info.plist */,
 				C788289F21809EF20051B023 /* UserDataModel.swift */,
+				2337FB0D21831DCE000EB00B /* SkillController.swift */,
 			);
 			path = "Swifty Companion";
 			sourceTree = "<group>";
@@ -218,6 +224,8 @@
 				C788288D218051370051B023 /* ViewController.swift in Sources */,
 				238D40072181E38600F789D5 /* TabBarController.swift in Sources */,
 				C788288B218051370051B023 /* AppDelegate.swift in Sources */,
+				2337FB0C21830B3F000EB00B /* ProjectController.swift in Sources */,
+				2337FB0E21831DCE000EB00B /* SkillController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
