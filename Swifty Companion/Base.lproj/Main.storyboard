@@ -19,9 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkW-qn-vse">
-                                <rect key="frame" x="146" y="359" width="83" height="30"/>
+                                <rect key="frame" x="142" y="359" width="91" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="GetUserInfo"/>
+                                <state key="normal" title="Get User Info"/>
                                 <connections>
                                     <segue destination="Npp-Qm-c8v" kind="show" identifier="TabController" id="1xs-ea-zPw"/>
                                 </connections>
@@ -33,8 +33,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="42.png" translatesAutoresizingMaskIntoConstraints="NO" id="N8Z-SQ-sXi">
+                                <rect key="frame" x="67" y="59" width="240" height="236"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
@@ -43,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-327" y="-908"/>
+            <point key="canvasLocation" x="-327.19999999999999" y="-908.09595202398805"/>
         </scene>
         <!--Overview-->
         <scene sceneID="EfJ-eV-znx">
@@ -136,7 +140,7 @@
                                 </subviews>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2fz-q9-lGv"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Overview" id="UdS-8Z-ZIM"/>
@@ -253,4 +257,7 @@
             <point key="canvasLocation" x="631" y="-908"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="42.png" width="225" height="225"/>
+    </resources>
 </document>
