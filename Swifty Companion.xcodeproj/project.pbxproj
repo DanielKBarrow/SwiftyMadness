@@ -24,7 +24,7 @@
 /* Begin PBXFileReference section */
 		2337FB0B21830B3F000EB00B /* ProjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
 		2337FB0D21831DCE000EB00B /* SkillController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillController.swift; sourceTree = "<group>"; };
-		2377429021885EE5004ED421 /* 42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 42.png; path = ../../../Downloads/42.png; sourceTree = "<group>"; };
+		2377429021885EE5004ED421 /* 42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 42.png; path = Assets.xcassets/42.png; sourceTree = "<group>"; };
 		23B26254218860E700CA373C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		454CC31A189CCF0C5E6ADAFC /* Pods-Swifty Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty Companion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty Companion/Pods-Swifty Companion.debug.xcconfig"; sourceTree = "<group>"; };
 		A26B2FFB16C0C361190B740C /* Pods-Swifty Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty Companion.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty Companion/Pods-Swifty Companion.release.xcconfig"; sourceTree = "<group>"; };
