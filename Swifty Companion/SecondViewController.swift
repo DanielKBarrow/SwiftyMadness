@@ -76,11 +76,9 @@ class SecondViewController: UIViewController {
     }
     
     func downloadImage(from url: URL) {
-        print("Download Started")
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
             print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
             DispatchQueue.main.async() {
                 self.imageView.image = UIImage(data: data)
             }
@@ -90,8 +88,8 @@ class SecondViewController: UIViewController {
     func validateTokenThenGetData() {
         if APIData.token != nil {
             let timeInterval : Double = Date().timeIntervalSince1970
-            print("timeInterval: " + String(timeInterval))
-            print("tokenExpires: " + String(APIData.tokenExpiry!))
+//            print("timeInterval: " + String(timeInterval))
+//            print("tokenExpires: " + String(APIData.tokenExpiry!))
             if timeInterval > APIData.tokenExpiry! {
                 print("Token expired")
                 APIData.token = nil
