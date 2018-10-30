@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../Downloads/42.png">
+   </FileRef>
+   <FileRef
       location = "group:Swifty Companion.xcodeproj">
    </FileRef>
    <FileRef
