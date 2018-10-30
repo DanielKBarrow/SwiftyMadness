@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		2337FB0C21830B3F000EB00B /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2337FB0B21830B3F000EB00B /* ProjectController.swift */; };
 		2337FB0E21831DCE000EB00B /* SkillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2337FB0D21831DCE000EB00B /* SkillController.swift */; };
-		238D40072181E38600F789D5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238D40062181E38600F789D5 /* TabBarController.swift */; };
+		2377429121885EE6004ED421 /* 42.png in Resources */ = {isa = PBXBuildFile; fileRef = 2377429021885EE5004ED421 /* 42.png */; };
+		23B26255218860E800CA373C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B26254218860E700CA373C /* TabBarController.swift */; };
 		A3CFC405C36A5967DB16C258 /* Pods_Swifty_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98F6421C096C0C06AA92732 /* Pods_Swifty_Companion.framework */; };
 		C788288B218051370051B023 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C788288A218051370051B023 /* AppDelegate.swift */; };
 		C788288D218051370051B023 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C788288C218051370051B023 /* ViewController.swift */; };
@@ -23,7 +24,8 @@
 /* Begin PBXFileReference section */
 		2337FB0B21830B3F000EB00B /* ProjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
 		2337FB0D21831DCE000EB00B /* SkillController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillController.swift; sourceTree = "<group>"; };
-		238D40062181E38600F789D5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = ../TabBarController.swift; sourceTree = "<group>"; };
+		2377429021885EE5004ED421 /* 42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 42.png; path = ../../../Downloads/42.png; sourceTree = "<group>"; };
+		23B26254218860E700CA373C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		454CC31A189CCF0C5E6ADAFC /* Pods-Swifty Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty Companion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty Companion/Pods-Swifty Companion.debug.xcconfig"; sourceTree = "<group>"; };
 		A26B2FFB16C0C361190B740C /* Pods-Swifty Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty Companion.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty Companion/Pods-Swifty Companion.release.xcconfig"; sourceTree = "<group>"; };
 		B98F6421C096C0C06AA92732 /* Pods_Swifty_Companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swifty_Companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +82,8 @@
 		C7882889218051370051B023 /* Swifty Companion */ = {
 			isa = PBXGroup;
 			children = (
-				238D40062181E38600F789D5 /* TabBarController.swift */,
+				23B26254218860E700CA373C /* TabBarController.swift */,
+				2377429021885EE5004ED421 /* 42.png */,
 				C788289D21806BBC0051B023 /* SecondViewController.swift */,
 				C788288A218051370051B023 /* AppDelegate.swift */,
 				C788288C218051370051B023 /* ViewController.swift */,
@@ -166,6 +169,7 @@
 				C7882895218051380051B023 /* LaunchScreen.storyboard in Resources */,
 				C7882892218051380051B023 /* Assets.xcassets in Resources */,
 				C7882890218051370051B023 /* Main.storyboard in Resources */,
+				2377429121885EE6004ED421 /* 42.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,8 +225,8 @@
 			files = (
 				C78828A021809EF20051B023 /* UserDataModel.swift in Sources */,
 				C788289E21806BBC0051B023 /* SecondViewController.swift in Sources */,
+				23B26255218860E800CA373C /* TabBarController.swift in Sources */,
 				C788288D218051370051B023 /* ViewController.swift in Sources */,
-				238D40072181E38600F789D5 /* TabBarController.swift in Sources */,
 				C788288B218051370051B023 /* AppDelegate.swift in Sources */,
 				2337FB0C21830B3F000EB00B /* ProjectController.swift in Sources */,
 				2337FB0E21831DCE000EB00B /* SkillController.swift in Sources */,
