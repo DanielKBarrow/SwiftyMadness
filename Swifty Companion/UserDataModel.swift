@@ -33,5 +33,11 @@ class UserDataModel {
         pictureURL = "Unavailable"
         projects = []
         skills = []
+        if projects.isEmpty {
+            print("empty projects")
+        }
+        if skills.isEmpty {
+            print("empty skills")
+        }
     }
 }

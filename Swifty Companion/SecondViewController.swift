@@ -196,6 +196,10 @@ class SecondViewController: UIViewController {
         }
     }
     
+    @IBAction func backButton(_ sender: UIButton) {
+        UserDataModel.reset()
+    }
+    
     func extractUserData(data : JSON) {
         UserDataModel.userName = searchUserName!
         if let displayName = data["displayname"].string, let email = data["email"].string, let level = data["cursus_users"][0]["level"].double,
