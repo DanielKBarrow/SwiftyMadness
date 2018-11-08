@@ -76,11 +76,9 @@ class SecondViewController: UIViewController {
     }
     
     func downloadImage(from url: URL) {
-        print("Download Started")
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
             print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
             DispatchQueue.main.async() {
                 self.imageView.image = UIImage(data: data)
             }
@@ -90,8 +88,8 @@ class SecondViewController: UIViewController {
     func validateTokenThenGetData() {
         if APIData.token != nil {
             let timeInterval : Double = Date().timeIntervalSince1970
-            print("timeInterval: " + String(timeInterval))
-            print("tokenExpires: " + String(APIData.tokenExpiry!))
+//            print("timeInterval: " + String(timeInterval))
+//            print("tokenExpires: " + String(APIData.tokenExpiry!))
             if timeInterval > APIData.tokenExpiry! {
                 print("Token expired")
                 APIData.token = nil
@@ -117,7 +115,9 @@ class SecondViewController: UIViewController {
                 self.extractToken(json : tokenData)
                 self.getUserInfo(name: searchUserName!)
             case .failure(let error):
-                self.userNameLabel.text = "Failed to get token"
+                UserDataModel.reset()
+                self.poplulate()
+                self.nameLabel.text = "Failed to get token"
                 print(error)
             }
             SVProgressHUD.dismiss()
@@ -130,7 +130,9 @@ class SecondViewController: UIViewController {
             APIData.tokenExpiry = created + expires
         }
         else {
-            userNameLabel.text = "could not refesh token"
+            UserDataModel.reset()
+            poplulate()
+            nameLabel.text = "could not refesh token"
             print ("Failed to get new token")
         }
     }
@@ -146,8 +148,11 @@ class SecondViewController: UIViewController {
                 case .success:
                     self.extractUserData(data: JSON(response.result.value!))
                 case .failure(let error):
+                    print("FAILED IN GET USER INFO")
                     print(error)
-                    self.userNameLabel.text = "user info request failed"
+                    UserDataModel.reset()
+                    self.poplulate()
+                    self.nameLabel.text = "username does not exist"
                 }
             }
         }
@@ -227,13 +232,15 @@ class SecondViewController: UIViewController {
             else {
                 UserDataModel.pictureURL = "https://cdn.intra.42.fr/users/small_default.png"
             }
+            poplulate()
         }
         else {
             // create popup and redirect back to loading page
-            print("Failed to extract user data from API respons")
+            print("Failed to extract user data from API response")
             UserDataModel.reset()
+            poplulate()
+            nameLabel.text = "Failed to extract user data from API response"
         }
-        poplulate()
     }
 }
 
